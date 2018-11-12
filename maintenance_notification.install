@@ -1,0 +1,53 @@
+<?php
+    function maintenance_notification_schema(){
+        $schema['maintenance_notifications'] = array(
+            'description' => 'Maintenance Notifications',
+            'fields' => array(
+
+                'id' => array(
+                    'description' => 'Notification ID Number',
+                    'type' => 'serial',
+                    'size' => 'normal',
+                    'unsigned' => TRUE,
+                    'not null' => TRUE,
+                ),
+                'notification_text' => array(
+                    'description' => 'Notice to display to users.',
+                    'type' => 'text',
+                    'length' => '500000',
+                    'not null' => TRUE
+                ),
+                'notification_display_start' => array(
+                    'description' => 'First notice display date',
+                    'type' => 'varchar',
+                    'length' => '160',
+                    'not null' => TRUE
+                ),
+                'notification_event_start' => array(
+                    'description' => 'Disruption start time',
+                    'type' => 'varchar',
+                    'length' => '160',
+                    'not null' => TRUE
+                ),
+                'notification_event_duration' => array(
+                    'description' => 'Disruption duration',
+                    'type' => 'varchar',
+                    'length' => '160',
+                    'not null' => TRUE
+                ),
+                
+            ),
+            'primary key' => array('id'),
+        );
+
+        return $schema;
+    }
+
+    function maintenance_notification_install(){
+        drupal_set_message("Maintenance Notification Installed\nConfigure Notifications in the Admin area.");
+    }
+
+    function maintenance_notification_uninstall(){
+        //Little Bobby Drop Table
+        drupal_uninstall_schema('maintenance_notifications');
+    }
