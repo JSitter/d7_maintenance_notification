@@ -1,0 +1,2 @@
+<?
+drupal_set_message($message="Maintenance Time is Scheduled", $type="status", $repeat=TRUE);
