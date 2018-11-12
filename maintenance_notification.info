@@ -1,3 +1,4 @@
 name = Maintenance Notification
 description = This will set a site-wide notification that warns visitors of scheduled downtimes.
 core = 7.x
+version = 1.0
